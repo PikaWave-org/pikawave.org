@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PikaWave — open-source handheld communicator</title>
+    <meta name="description" content="Pika is a handheld radio that talks straight to other radios, with no network in between: push-to-talk and voice messages over LoRa, end-to-end encrypted.">
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: light-dark(#f6efd9, #101215);
+            --fg: light-dark(#404040, #ececec);
+            --muted: light-dark(#404040, #a0a4ab);
+            --accent: light-dark(#c66701, #d58632);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: var(--bg);
+            color: var(--fg);
+            font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto,
+                  "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+        }
+
+        main { max-width: 50rem; }
+
+        .hero { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+        .mark { flex: none; width: clamp(6rem, 22vw, 11rem); height: auto; border-radius: 50%; }
+
+        h1 { margin: 0; font-size: clamp(2.25rem, 8vw, 4rem); line-height: 1; }
+
+        h1 span { font-weight: 400; }
+
+        .tagline { font-size: 1.2rem; font-style: italic; }
+
+        h2 { margin: 2rem 0 .75rem; font-size: 1.5rem; }
+
+        p { margin: 0 0 1rem; color: var(--muted); }
+
+        a { color: var(--accent); }
+
+        .progress { margin: 0; padding-left: 1.4em; color: var(--muted); list-style-type: "⬜ "; }
+
+        .progress .wip { list-style-type: "🛠 "; }
+
+        .progress .done { list-style-type: "✅ "; }
+
+        .progress li { margin-bottom: .5rem; }
+
+        .progress li::marker { font-size: .9em; }
+
+        @media (max-width: 30rem) {
+            .hero { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="hero">
+        <img class="mark" src="img/pikawave_logo_big.webp" width="1124" height="1124"
+             alt="PIKAwave logo">
+
+        <div>
+            <h1>PIKA<span>wave</span></h1>
+            <p class="tagline">open-source handheld communicator</p>
+        </div>
+    </div>
+
+    <p><b>Pika</b> is a handheld radio — somewhere between push-to-talk and voice messages. Radios reach
+        each other directly: no towers, no network, no phone.
+        Talk in near real time, or leave a message for later. Anything you receive can be played back as many
+        times as you want.</p>
+    <p>It works on sub-1 GHz bands with LoRa modulation, uses MELPe for voice compression, and runs on an
+        STM32H7. Traffic is end-to-end encrypted with X25519 and AES-256, and each radio only accepts
+        messages from contacts you have added to it. A built-in GNSS receiver lets you share your position.</p>
+    <p>Two radios are planned. <b>Pika Go</b> is the full version: rugged and sealed against snow and water,
+        for travel and outdoor sport. <b>Pika Lina</b> — from the Italian <i lang="it">piccolina</i>,
+        little one — is for kids: smaller, lighter, cheaper and simpler.</p>
+    <p>Battery life is a target of its own: a few days of active use, or weeks on standby.</p>
+
+    <h2>Plan and progress</h2>
+
+    <ul class="progress">
+        <li class="wip">PCB design for the first prototype:
+            <a href="https://github.com/PikaWave-org/pika-hardware/tree/main/pika_go_0">Pika Go 0</a></li>
+        <li>Minimal UI: LCD driver and buttons</li>
+        <li>LoRa modem driver</li>
+        <li>Microphone input (ADC) and speaker output (DAC)</li>
+        <li>On-device MELPe voice encoding and decoding</li>
+        <li>Draft application protocol</li>
+        <li>Full UI: screens, menus and settings</li>
+        <li>Message store and replay</li>
+        <li>Low-power mode when idle</li>
+        <li>Enclosure design</li>
+        <li>Field test at real distances</li>
+        <li>X25519 key exchange and AES-256 transport frames</li>
+        <li>Contact management</li>
+        <li>GNSS position sharing</li>
+        <li>Contact sharing</li>
+        <li>Group channels</li>
+    </ul>
+
+    <h2>Getting involved</h2>
+
+    <p>Any help is welcome, hardware or software: boards, firmware, codecs, enclosures, or a second radio for
+        field testing. Write to <a href="mailto:contribute@pikawave.org">chirp@pikawave.org</a> and say what you
+        would like to work on.</p>
+</main>
+</body>
+</html>
